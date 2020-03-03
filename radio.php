@@ -45,13 +45,6 @@
     }
     ?>
 
-<?php //condition qui sert a ne pas afficher du formulaire si il a deja ete completer
- 
- 
-
-?>
-
-
 </body>
 
 </html>
