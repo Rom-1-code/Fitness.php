@@ -147,7 +147,6 @@
 
         <?php // recuperation de l'id user 
         if (!empty($_SESSION['pseudo'])) {
-            $Base = new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8', 'root', '');
             $username = $_SESSION['pseudo'];
             $recupid = $Base->query("SELECT `id_user` FROM `user` WHERE pseudo= '" . $username . "'");
             $userid = $recupid->fetch();
