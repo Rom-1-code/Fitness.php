@@ -50,26 +50,21 @@
     </nav>
     <div class="container">
         <!-- FIN HEADER -->
-
-
-
-        <?php
+        <?php 
+        if (!empty($_SESSION['pseudo'])) {
 
         echo " <h1> Bonjour " . $_SESSION['pseudo'] . " !" . "</h1>";
         ?>
 
-
-
-        <p> Voici votre profil vous y retrouverai votre programme ainsi que vos informations personnelles</p>
-
-
+        <p> Voici votre profil vous y retrouverez votre programme ainsi que vos informations personnelles</p>
 
         <?php
 
         $prog = new programme();
-        $prog->AfficheProg($_SESSION['id_user'], $_SESSION['id_prog']);
+        $prog->AfficheProg($_SESSION['id_user']);
+        }
         ?>
-
+        
 
 </body>
 

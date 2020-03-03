@@ -60,8 +60,8 @@ class programme
         // SELECT * FROM table1 INNER JOIN table2 ON table1.id = table2.fk_id
 
         $resultat3 = $requete3->fetch();
-            echo  "Votre programme est " . $resultat3[0];
-            return $resultat3[0];
+            echo  "Votre programme est " . $resultat3[0];       
+           
             
         
      }

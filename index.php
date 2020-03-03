@@ -56,7 +56,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Connexion</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Inscription</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -157,15 +157,19 @@
             $_SESSION['id_user'] = $userid['id_user'];
         }
         ?>
-        <?php // affichage btn radio si l'utilisateur est connecter
-
+        <?php // afficher btn radio si l'utilisateur est connecter et qu'il n'a pas de programme
         if (!empty($_SESSION['pseudo'])) {
-            include("radio.php");
+        $donneebdd = $Base->prepare('SELECT * from assos_user_prog WHERE id_user= ?');
+        $donneebdd->execute((array($_SESSION['id_user'])));
+        $idprogexist = $donneebdd->rowCount();
+
+        if ($idprogexist == 0) {
+            if (!empty($_SESSION['pseudo'])) {
+                include("radio.php");
+            }
         }
+    }
         ?>
-
-
-
     </div>
 
     <!-- Optional JavaScript -->
