@@ -129,7 +129,7 @@
 
         <?php // Début du PHP pour la connection
 
-        $Base = new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8', 'root', '');
+        $Base = new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8', 'root', 'root');
 
         if (isset($_POST['username_co']) && isset($_POST['password_co'])) {
             $pseudoconnect = $_POST['username_co'];
@@ -150,7 +150,7 @@
 
         <?php // recuperation de l'id user 
         if (!empty($_SESSION['pseudo'])) {
-            $Base = new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8', 'root', '');
+            $Base = new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8', 'root', 'root');
             $username = $_SESSION['pseudo'];
             $recupid = $Base->query("SELECT `id_user` FROM `user` WHERE pseudo= '" . $username . "'");
             $userid = $recupid->fetch();
@@ -158,17 +158,11 @@
         }
         ?>
         <?php // affichage btn radio si l'utilisateur est connecter
+
         if (!empty($_SESSION['pseudo'])) {
             include("radio.php");
         }
         ?>
-
-        <?php // Message de deconnexion
-        
-        ?>
-
-
-
 
 
 

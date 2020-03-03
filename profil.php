@@ -67,9 +67,7 @@
         <?php
 
         $prog = new programme();
-        $prog->AfficheProg($prog);
-        echo "<p>Vous etes " . $_SESSION['pseudo'] . " est votre programme est </p> "
-
+        $prog->AfficheProg($_SESSION['id_user'], $_SESSION['id_prog']);
         ?>
 
 
