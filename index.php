@@ -33,9 +33,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="profil.php">Profil</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">A propos</a>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Identification
                 </a>
@@ -48,8 +45,8 @@
             </li>
         </ul>
     </nav>
+    <!-- FIN HEADER -->
     <div class="container">
-        <!-- FIN HEADER -->
 
         <!-- Pop-up d'inscription -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -129,7 +126,7 @@
 
         <?php // Début du PHP pour la connection
 
-        $Base = new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8', 'root', 'root');
+        $Base = new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8', 'root', '');
 
         if (isset($_POST['username_co']) && isset($_POST['password_co'])) {
             $pseudoconnect = $_POST['username_co'];
@@ -140,8 +137,8 @@
             if ($userexist == 1) {
                 $userinfo = $requser->fetch();
                 $_SESSION['pseudo'] = $userinfo['pseudo'];
-                echo "Vous être connecté en tant que " . $userinfo['pseudo'];
-                echo "<p>Vous pouvez maintenant choisir votre programme ou visité votre profile</p>";
+                echo "Vous être connecté en tant que " . $userinfo['pseudo']. ".";
+                echo "<p>Vous pouvez maintenant choisir votre programme ou "; ?><a href="profil.php">visité votre profile.</a><?php
             } else {
                 echo "<p>Identifiant ou mot de passe incorrect !</p>";
             }
@@ -150,7 +147,7 @@
 
         <?php // recuperation de l'id user 
         if (!empty($_SESSION['pseudo'])) {
-            $Base = new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8', 'root', 'root');
+            $Base = new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8', 'root', '');
             $username = $_SESSION['pseudo'];
             $recupid = $Base->query("SELECT `id_user` FROM `user` WHERE pseudo= '" . $username . "'");
             $userid = $recupid->fetch();
@@ -159,17 +156,50 @@
         ?>
         <?php // afficher btn radio si l'utilisateur est connecter et qu'il n'a pas de programme
         if (!empty($_SESSION['pseudo'])) {
-        $donneebdd = $Base->prepare('SELECT * from assos_user_prog WHERE id_user= ?');
-        $donneebdd->execute((array($_SESSION['id_user'])));
-        $idprogexist = $donneebdd->rowCount();
+            $donneebdd = $Base->prepare('SELECT * from assos_user_prog WHERE id_user= ?');
+            $donneebdd->execute((array($_SESSION['id_user'])));
+            $idprogexist = $donneebdd->rowCount();
 
-        if ($idprogexist == 0) {
-            if (!empty($_SESSION['pseudo'])) {
-                include("radio.php");
+            if ($idprogexist == 0) {
+                if (!empty($_SESSION['pseudo'])) {
+                    include("radio.php");
+                }
             }
         }
-    }
         ?>
+        <!-- Carte pour voir les programme -->
+        <div class="row">
+            <div class="col-sm">
+                <div class="card" style="width: 20rem;">
+                    <img src="img/fitness.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Presentation des programmes</h5>
+                        <p class="card-text">Dans cet article, vous trouverez tous nos conseils et exercices pour chaque programmes.</p>
+                        <a href="liste.php" class="btn btn-primary">Lire</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card" style="width: 20rem;">
+                    <img src="img/mathis&roro.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Qui sommes nous ?</h5>
+                        <p class="card-text">Dans cet article, vous apprendrez à mieux nous connaitre, qui sommes nous que faisont nous...</p>
+                        <a href="#" class="btn btn-primary">Lire</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card" style="width: 20rem;">
+                    <img src="img/garder-la-forme" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Conseil pour rester en forme </h5>
+                        <p class="card-text">Dans cet article, vous trouverez tous nos conseils et astuces pour rester en forme tout au long de l'année.</p>
+                        <a href="#" class="btn btn-primary">Lire</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Optional JavaScript -->
