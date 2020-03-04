@@ -140,7 +140,7 @@
                 }
             }
         } else {
-            echo "<p>Aucun user selectionné</p>";
+            echo "<p>Aucun programme selectionné</p>";
         }
         ?>
     </div>
