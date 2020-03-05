@@ -23,7 +23,7 @@ class user{
 
         try
         {
-            $Base=new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8','root', '');
+            $Base=new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8','root', 'root');
             $insUser=$Base->query('INSERT INTO `user`(`pseudo`, `mdp`) VALUES ("'.$pseudo.'","'.$mdp.'")') ;
         }    
     

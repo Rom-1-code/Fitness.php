@@ -126,7 +126,7 @@
 
         <?php // Début du PHP pour la connection
 
-        $Base = new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8', 'root', '');
+        $Base = new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8', 'root', 'root');
 
         if (isset($_POST['username_co']) && isset($_POST['password_co'])) {
             $pseudoconnect = $_POST['username_co'];
@@ -183,14 +183,14 @@
                     <img src="img/mathis&roro.jpg" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title">Qui sommes nous ?</h5>
-                        <p class="card-text">Dans cet article, vous apprendrez à mieux nous connaitre, qui sommes nous que faisont nous...</p>
+                        <p class="card-text">Dans cet article, vous apprendrez à mieux nous connaitre, qui sommes nous que faisons nous...</p>
                         <a href="#" class="btn btn-primary">Lire</a>
                     </div>
                 </div>
             </div>
             <div class="col-sm">
                 <div class="card" style="width: 20rem;">
-                    <img src="img/garder-la-forme" class="card-img-top">
+                    <img src="img/forme.jpg" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title">Conseil pour rester en forme </h5>
                         <p class="card-text">Dans cet article, vous trouverez tous nos conseils et astuces pour rester en forme tout au long de l'année.</p>
