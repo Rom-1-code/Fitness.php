@@ -51,8 +51,8 @@
         <!-- liste deroulante pour les users-->
         <?php // recuperation des users
         try {
-            $base = new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8', 'root', 'root');
-            $DonneeBruteUser = $base->query('SELECT * from user');
+            $Base = new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8', 'root', 'root');
+            $DonneeBruteUser = $Base->query('SELECT * from user');
             $TabUserIndex = 0;
 
             while ($tab = $DonneeBruteUser->fetch()) {
@@ -100,8 +100,7 @@
 
         <?php // recuperation des Programmes
         try {
-            $base = new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8', 'root', 'root');
-            $DonneeBruteProg = $base->query('SELECT * from programme');
+            $DonneeBruteProg = $Base->query('SELECT * from programme');
             $TabProgIndex = 0;
 
             while ($tab = $DonneeBruteProg->fetch()) {
