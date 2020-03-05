@@ -28,7 +28,7 @@
         </div>
         <ul class="nav justify-content-center ">
             <li class="nav-item">
-                <a class="nav-link active" href="#">Acceuil</a>
+                <a class="nav-link active" href="#">Accueil</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="profil.php">Profil</a>
