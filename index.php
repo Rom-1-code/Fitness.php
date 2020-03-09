@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/identification.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Fitness</title>
 </head>
 
@@ -137,13 +137,13 @@
             if ($userexist == 1) {
                 $userinfo = $requser->fetch();
                 $_SESSION['pseudo'] = $userinfo['pseudo'];
-                echo "Vous être connecté en tant que " . $userinfo['pseudo']. ".";
+                echo "Vous être connecté en tant que " . $userinfo['pseudo'] . ".";
                 echo "<p>Vous pouvez maintenant choisir votre programme ou "; ?><a href="profil.php">visité votre profile.</a><?php
-            } else {
-                echo "<p>Identifiant ou mot de passe incorrect !</p>";
-            }
-        }
-        ?>
+                                                                                                                            } else {
+                                                                                                                                echo "<p>Identifiant ou mot de passe incorrect !</p>";
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                                ?>
 
         <?php // recuperation de l'id user 
         if (!empty($_SESSION['pseudo'])) {
@@ -166,7 +166,16 @@
             }
         }
         ?>
-        <!-- Carte pour voir les programme -->
+        <!-- Carte pour voir les programme et articles -->
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">FITNESS.php est une application Web</h1>
+                <p class="h4">qui vous permet de créer et gérer vos routines d'entraînement</p>
+                <hr class="my-4">
+                <p class="lead">FITNESS.php vous donne accès à plusieurs liste d'exercices de fitness, qui sont tous représentés par des illustrations animées ou des vidéos. FITNESS.php est accessible à l'aide de votre navigateur Web. Aucun logiciel à télécharger. Vous pouvez même accéder à vos routines d'entraînement lorsque vous êtes en déplacement, à l'aide des navigateurs mobiles présents dans les téléphones intelligents et les tablettes.</p>
+
+            </div>
+        </div>
         <div class="row">
             <div class="col-sm">
                 <div class="card" style="width: 20rem;">
@@ -200,6 +209,39 @@
             </div>
         </div>
     </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="copyright-text">
+                        <p>Copyright &copy; 2020 Amiens - France. Inc. Tous droits réservés.</p>
+                        <p>Developped and Designed by : Romain Flemal, Mathis Clermont</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="social-icons">
+                        <ul>
+                            <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-rss"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

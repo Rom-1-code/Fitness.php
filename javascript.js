@@ -5,5 +5,4 @@ function CalculIMC() {
     var ResultatImc = Poids / TailleX2;
     alert("Votre IMC est de " + ResultatImc.toFixed(2));
     ResultatImc = '<?php echo $ResultatImc; ?>';
-
 }
