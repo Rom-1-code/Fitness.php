@@ -142,6 +142,8 @@
             echo "<p>Aucun programme selectionné</p>";
         }
         ?>
+        <?php
+        include("pdf/musculation-poids-de-corps.pdf");?>
     </div>
 
 
