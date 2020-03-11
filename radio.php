@@ -35,14 +35,21 @@
         </form>
     </div>
 
-    <?php // début du php pour le traitement des checkbox
+    <?php // Début du php pour le traitement des checkbox
 
     if (empty($_POST['exampleRadios'])) {
     } else {
         $ajouteProg = new programme();
         $ajouteProg->AddProg($_SESSION['id_user'], $_POST['exampleRadios']);
-        echo " <p>Vous avez choisie le programme " . $_POST['exampleRadios'] . "</p> ";
+        echo " <p>Vous avez choisie le programme " . $_POST['exampleRadios'] . " vous pouvez maintenant " ?> <a href="profil.php">visité votre profile.</a> <?php "</p> ";
     }
+    ?>
+
+    <?php 
+    
+
+    
+    
     ?>
 
 </body>

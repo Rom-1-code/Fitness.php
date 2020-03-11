@@ -10,12 +10,12 @@ class user{
     
     //Construc
 
-    // public function __construct($_idUser,$_idprog,$_pseudo,$_mdp)
+    // public function __construct($idUser,$idprog,$pseudo,$mdp)
     //{
-      //  $this->_idUser = $_idUser;
-        //$this->_idprog = $_idprog;
-        //$this->_pseudo = $_pseudo;
-        //$this->_Mdp = $_mdp; 
+      //  $this->_idUser = $idUser;
+        //$this->_idprog = $idprog;
+        //$this->_pseudo = $pseudo;
+        //$this->_Mdp = $mdp; 
     //}
 
     //Methodes

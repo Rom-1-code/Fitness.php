@@ -11,11 +11,11 @@ class programme
 
     //Construc   
 
-    // public function __construct($_idprog,$_typeProg, $_iduser){
-    //   $this->_iduser = $_iduser;
-    // $this->_idprog = $_idprog;
-    //$this->_typeProg = $_typeProg; 
-    //}
+    //public function __construct($idprog,$typeProg,$iduser){
+      //  $this->_iduser = $iduser;
+       // $this->_idprog = $idprog;
+       // $this->_typeProg = $typeProg; 
+   // }
 
     //Methodes
 
@@ -80,5 +80,8 @@ class programme
         $this->_idprog = $idprog;
         $this->_typeprogramme = $typeprgramme;
     }
+
+
+
 }
 ?>
