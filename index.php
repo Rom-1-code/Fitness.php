@@ -139,11 +139,11 @@
                 $_SESSION['pseudo'] = $userinfo['pseudo'];
                 echo "Vous être connecté en tant que " . $userinfo['pseudo'] . ".";
                 echo "<p>Vous pouvez maintenant choisir votre programme ou "; ?><a href="profil.php">visité votre profile.</a><?php
-                                                                                                                            } else {
-                                                                                                                                echo "<p>Identifiant ou mot de passe incorrect !</p>";
-                                                                                                                            }
-                                                                                                                        }
-                                                                                                                                ?>
+            } else {
+             echo "<p>Identifiant ou mot de passe incorrect !</p>";
+            }
+        }
+        ?>
 
         <?php // recuperation de l'id user 
         if (!empty($_SESSION['pseudo'])) {
