@@ -85,10 +85,14 @@
 
         <?php // Début du PHP pour l'inscriptuion
         if (empty($_POST['username_ins']) && empty($_POST['password_ins']) && empty($_POST['password2_ins'])) {
-        } else {
+        } 
+        else if($_POST['password_ins'] == $_POST['password2_ins']) {
             $user = new user(); //les mots de passe sont corrects, on crée l'objet user
             $user->Inscription($_POST['username_ins'], $_POST['password_ins']);
             echo " <p>Nous vous remercion de votre inscription ! Vous pouvez vous connecter</p>";
+        }else
+        {
+            echo"Les mots de passe ne correspondent pas";
         }
         ?>
         <!-- fin php insciption -->
