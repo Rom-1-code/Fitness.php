@@ -14,7 +14,7 @@ class programme
     //public function __construct($idprog,$typeProg,$iduser){
       //  $this->_iduser = $iduser;
        // $this->_idprog = $idprog;
-       // $this->_typeProg = $typeProg; 
+       // $this->_typeProg = $typeProg
    // }
 
     //Methodes

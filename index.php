@@ -149,7 +149,7 @@
         }
         ?>
 
-        <?php // recuperation de l'id user 
+        <?php // recuperation de l'id users 
         if (!empty($_SESSION['pseudo'])) {
             $username = $_SESSION['pseudo'];
             $recupid = $Base->query("SELECT `id_user` FROM `user` WHERE pseudo= '" . $username . "'");
@@ -157,7 +157,7 @@
             $_SESSION['id_user'] = $userid['id_user'];
         }
         ?>
-        <?php // afficher btn radio si l'utilisateur est connecter et qu'il n'a pas de programme
+        <?php // afficher btn radio si l'utilisateur est connecter et qu'il n'a pas de programmes
         if (!empty($_SESSION['pseudo'])) {
             $donneebdd = $Base->prepare('SELECT * from assos_user_prog WHERE id_user= ?');
             $donneebdd->execute((array($_SESSION['id_user'])));
