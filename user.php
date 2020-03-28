@@ -18,9 +18,7 @@ class user
       //  $this->_idUser = $idUser;
         //$this->_idprog = $idprog;
         //$this->_pseudo = $pseudo;
-       // $this->_Mdp = $mdp;
-      //  $this->_bdd = $bdd;
-  //  }
+
 
     //Methodes
     public function bdd()
