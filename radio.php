@@ -40,7 +40,8 @@
     if (empty($_POST['exampleRadios'])) {
     } else {
         $ajouteProg = new programme();
-        $ajouteProg->AddProg($_SESSION['id_user'], $_POST['exampleRadios']);
+        $base = $ajouteProg->bdd();
+        $ajouteProg->AddProg($_SESSION['id_user'], $_POST['exampleRadios'], $base);
         echo " <p>Vous avez choisie le programme " . $_POST['exampleRadios'] . " vous pouvez maintenant " ?> <a href="profil.php">visité votre profile.</a> <?php "</p> ";
     }
     ?>

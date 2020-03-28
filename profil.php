@@ -87,7 +87,8 @@
         if (empty($_POST['username_ins']) && empty($_POST['password_ins']) && empty($_POST['password2_ins'])) {
         } else {
             $user = new user(); //les mots de passe sont corrects, on crée l'objet user
-            $user->Inscription($_POST['username_ins'], $_POST['password_ins']);
+            $base = $user->bdd();
+            $user->Inscription($_POST['username_ins'], $_POST['password_ins'], $base);
             echo " <p>Nous vous remercion de votre inscription ! Vous pouvez vous connecter</p>";
         }
         ?>
@@ -158,7 +159,8 @@
         <?php
 
             $prog = new programme();
-            $prog->AfficheProg($_SESSION['id_user']);
+            $base = $prog->bdd();
+            $prog->AfficheProg($_SESSION['id_user'], $base);
         }
         ?>
 

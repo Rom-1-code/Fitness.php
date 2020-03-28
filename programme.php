@@ -1,4 +1,3 @@
-
 <?php
 
 class programme
@@ -18,40 +17,47 @@ class programme
    // }
 
     //Methodes
+    public function bdd()
+    {
+        try {
+            $bdd = new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8', 'root', 'root');
+        } catch (Exception $erreur) {
+            echo 'Erreur : ' . $erreur->getMessage();
+        }
+        return $bdd;
+    }
 
-
-    public function AddProg($idprog, $iduser)
+    public function AddProg($idprog, $iduser ,$bdd)
     {
 
         try {
-            $Base = new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8', 'root', 'root');
-            $AddUserProg = $Base->query('INSERT INTO `assos_user_prog`(`id_user`, `id_prog`) VALUES ("' . $idprog . '","' . $iduser . '")');
+            
+             $bdd->query('INSERT INTO `assos_user_prog`(`id_user`, `id_prog`) VALUES ("' . $idprog . '","' . $iduser . '")');
         } catch (Exception $erreur) {
             echo 'Erreur : ' . $erreur->getMessage();
         }
     }
 
-    public function AfficheTypeProg()
+    public function AfficheTypeProg($bdd)
     {
 
         try {
-            $Base = new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8', 'root', 'root');
-            $affiche = $Base->query('SELECT `id_user`, `id_prog` FROM `assos_user_prog`');
+            $bdd->query('SELECT `id_user`, `id_prog` FROM `assos_user_prog`');
         } catch (Exception $erreur) {
             echo 'Erreur : ' . $erreur->getMessage();
         }
         return $this->_typeprogramme;
     }
 
-    public function AfficheProg($iduser)
+    public function AfficheProg($iduser, $bdd)
     {
 
-        $Base = new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8', 'root', 'root');
-        $requete = $Base->query('SELECT pseudo FROM user INNER JOIN assos_user_prog ON user.id_user = assos_user_prog.id_user WHERE user.id_user="' . $iduser . '"');
-        $requete2 = $Base->query('SELECT id_prog  FROM  assos_user_prog WHERE id_user="' . $iduser . '"');
+       
+        $requete = $bdd->query('SELECT pseudo FROM user INNER JOIN assos_user_prog ON user.id_user = assos_user_prog.id_user WHERE user.id_user="' . $iduser . '"');
+        $requete2 = $bdd->query('SELECT id_prog  FROM  assos_user_prog WHERE id_user="' . $iduser . '"');
         $TabIdProg = $requete2->fetch();
         $idprog = $TabIdProg[0];
-        $requete3 = $Base->query('SELECT typeprogramme FROM programme INNER JOIN assos_user_prog ON programme.id_prog = assos_user_prog.id_prog WHERE programme.id_prog="' . $idprog . '"');
+        $requete3 = $bdd->query('SELECT typeprogramme FROM programme INNER JOIN assos_user_prog ON programme.id_prog = assos_user_prog.id_prog WHERE programme.id_prog="' . $idprog . '"');
         // echo 'SELECT typeprogramme FROM programme INNER JOIN assos_user_prog ON programme.id_prog = assos_user_prog.id_prog WHERE programme.id_prog="'.$idprog.'"';
         // SELECT * FROM table1 INNER JOIN table2 ON table1.id = table2.fk_id
 

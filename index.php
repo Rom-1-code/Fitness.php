@@ -88,7 +88,8 @@
         } 
         else if($_POST['password_ins'] == $_POST['password2_ins']) {
             $user = new user(); //les mots de passe sont corrects, on crée l'objet user
-            $user->Inscription($_POST['username_ins'], $_POST['password_ins']);
+            $base = $user->bdd();
+            $user->Inscription($_POST['username_ins'], $_POST['password_ins'], $base);
             echo " <p>Nous vous remercion de votre inscription ! Vous pouvez vous connecter</p>";
         }else
         {
