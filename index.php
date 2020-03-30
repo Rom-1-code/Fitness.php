@@ -130,24 +130,14 @@
         </div>
 
         <?php // Début du PHP pour la connection
-
-        $Base = new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8', 'root', 'root');
-
         if (isset($_POST['username_co']) && isset($_POST['password_co'])) {
-            $pseudoconnect = $_POST['username_co'];
-            $mdpconnect = $_POST['password_co'];
-            $requser = $Base->prepare("SELECT * FROM user WHERE pseudo = ? AND mdp = ?");
-            $requser->execute(array($pseudoconnect, $mdpconnect));
-            $userexist = $requser->rowCount();
-            if ($userexist == 1) {
-                $userinfo = $requser->fetch();
-                $_SESSION['pseudo'] = $userinfo['pseudo'];
-                echo "Vous être connecté en tant que " . $userinfo['pseudo'] . ".";
-                echo "<p>Vous pouvez maintenant choisir votre programme ou "; ?><a href="profil.php">visité votre profile.</a><?php
-            } else {
+        $coUser = new user();//le mot de passe sont corrects, on crée l'objet user
+        $base = $coUser->bdd();
+        $coUser->Connexion($_POST['username_co'], $_POST['password_co'], $base);
+        }else{
              echo "<p>Identifiant ou mot de passe incorrect !</p>";
-            }
         }
+        
         ?>
 
         <?php // recuperation de l'id users 

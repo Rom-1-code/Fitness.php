@@ -57,7 +57,7 @@
 
             while ($tab = $DonneeBruteUser->fetch()) {
                 $TabUser[$TabUserIndex] = new user();
-                $TabUser[$TabUserIndex]->log($tab['id_user'], $tab['pseudo'], $tab['mdp']);
+                $TabUser[$TabUserIndex]->MiniConstruct($tab['id_user'], $tab['pseudo'], $tab['mdp']);
                 $TabUser[$TabUserIndex++];
             }
         } catch (Exception $erreurs) {
@@ -87,7 +87,7 @@
         if (isset($_POST["users"])) {
             foreach ($TabUser as $objetUser) {
                 if ($objetUser->getIdUser() == $_POST["users"]) {
-                    $objetUser->afficheruser();
+                    $objetUser->AfficherUser();
                 }
             }
         } else {
@@ -105,7 +105,7 @@
 
             while ($tab = $DonneeBruteProg->fetch()) {
                 $TabProg[$TabProgIndex] = new programme();
-                $TabProg[$TabProgIndex]->log($tab['id_prog'], $tab['typeprogramme']);
+                $TabProg[$TabProgIndex]->MiniConstruct($tab['id_prog'], $tab['typeprogramme']);
                 $TabProg[$TabProgIndex++];
             }
         } catch (Exception $erreurs) {
@@ -135,7 +135,7 @@
         if (isset($_POST["prog"])) {
             foreach ($TabProg as $objetProg) {
                 if ($objetProg->getidprog() == $_POST["prog"]) {
-                    $objetProg->afficheProgramme();
+                    $objetProg->AfficheProgramme();
                 }
             }
         } else {

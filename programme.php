@@ -65,7 +65,7 @@ class programme
         echo  "Votre programme est le programme " . $resultat3[0];
     }
 
-    public function afficheProgramme()
+    public function AfficheProgramme()
     {
         echo "Vous avez affaire au programme numéro  " . $this->_idprog . " il s'appelle " . $this->_typeprogramme . " et à pour user " . $this->_iduser . "";
     }
@@ -81,7 +81,7 @@ class programme
         return $this->_typeprogramme;
     }
 
-    public function log($idprog, $typeprgramme) //sorte de second constructeur
+    public function MiniConstruct($idprog, $typeprgramme) //sorte de second constructeur
     {
         $this->_idprog = $idprog;
         $this->_typeprogramme = $typeprgramme;

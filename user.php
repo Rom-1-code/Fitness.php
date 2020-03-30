@@ -40,11 +40,20 @@ class user
             echo 'Erreur : ' . $erreur->getMessage();
         }
     }
-    public function afficheruser()
+    public function AfficherUser()
     {
         echo "Vous avez affaire à l'utilisateur numéro  " . $this->_idUser . " il s'appelle " . $this->_pseudo . " et a choisi le programme numéro " . $this->_idprog . "";
     }
 
+    public function Connexion($pseudo, $mdp , $bdd){
+            $requser = $bdd->query('SELECT * FROM user WHERE "'.$pseudo.'"=`pseudo` && "'.$mdp.'"=`mdp');
+            
+                $userinfo = $requser->fetch();
+                $_SESSION['pseudo'] = $userinfo['pseudo'];
+                echo "Vous être connecté en tant que " . $userinfo['pseudo'] . ".";
+                echo "<p>Vous pouvez maintenant choisir votre programme ou "; ?><a href="profil.php">visité votre profile.</a><?php
+            
+    }
 
     public function getIdUser()
     {
@@ -61,7 +70,7 @@ class user
         return $this->_mdp;
     }
 
-    public function log($iduser, $pseudo, $mdp) //sorte de second constructeur
+    public function MiniConstruct($iduser, $pseudo, $mdp) //sorte de second constructeur
     {
         $this->_idUser = $iduser;
         $this->_pseudo = $pseudo;
