@@ -85,15 +85,13 @@
 
         <?php // Début du PHP pour l'inscriptuion
         if (empty($_POST['username_ins']) && empty($_POST['password_ins']) && empty($_POST['password2_ins'])) {
-        } 
-        else if($_POST['password_ins'] == $_POST['password2_ins']) {
+        } else if ($_POST['password_ins'] == $_POST['password2_ins']) {
             $user = new user(); //les mots de passe sont corrects, on crée l'objet user
             $base = $user->bdd();
             $user->Inscription($_POST['username_ins'], $_POST['password_ins'], $base);
             echo " <p>Nous vous remercion de votre inscription ! Vous pouvez vous connecter</p>";
-        }else
-        {
-            echo"Les mots de passe ne correspondent pas";
+        } else {
+            echo "Les mots de passe ne correspondent pas";
         }
         ?>
         <!-- fin php insciption -->
@@ -130,17 +128,27 @@
         </div>
 
         <?php // Début du PHP pour la connection
+
         if (isset($_POST['username_co']) && isset($_POST['password_co'])) {
-        $coUser = new user();//le mot de passe sont corrects, on crée l'objet user
-        $base = $coUser->bdd();
-        $coUser->Connexion($_POST['username_co'], $_POST['password_co'], $base);
-        }else{
-             echo "<p>Identifiant ou mot de passe incorrect !</p>";
-        }
-        
+            $coUser = new user(); //le mot de passe sont corrects, on crée l'objet user
+            $base = $coUser->bdd();
+            $coUser->Connexion($_POST['username_co'], $_POST['password_co'], $base);
+        } //fin du PHP pour la connection
+
         ?>
 
+        <?php //connexion a la bdd
+
+        try {
+            $Base = new PDO('mysql:host=localhost; dbname=applisportive; charset=utf8', 'root', 'root');
+        } catch (Exception $erreur) {
+            echo 'Erreur : ' . $erreur->getMessage();
+        }
+
+        ?>
+        
         <?php // recuperation de l'id users 
+
         if (!empty($_SESSION['pseudo'])) {
             $username = $_SESSION['pseudo'];
             $recupid = $Base->query("SELECT `id_user` FROM `user` WHERE pseudo= '" . $username . "'");
@@ -148,8 +156,10 @@
             $_SESSION['id_user'] = $userid['id_user'];
         }
         ?>
+
         <?php // afficher btn radio si l'utilisateur est connecter et qu'il n'a pas de programmes
         if (!empty($_SESSION['pseudo'])) {
+
             $donneebdd = $Base->prepare('SELECT * from assos_user_prog WHERE id_user= ?');
             $donneebdd->execute((array($_SESSION['id_user'])));
             $idprogexist = $donneebdd->rowCount();

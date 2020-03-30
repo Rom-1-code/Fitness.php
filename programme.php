@@ -1,12 +1,10 @@
 <?php
+class programme{
 
-class programme
-{
     //Propiétés
     private $_iduser;
     private $_idprog;
     private $_typeprogramme;
-
 
     //Construc   
 
@@ -29,7 +27,6 @@ class programme
 
     public function AddProg($idprog, $iduser ,$bdd)
     {
-
         try {
             
              $bdd->query('INSERT INTO `assos_user_prog`(`id_user`, `id_prog`) VALUES ("' . $idprog . '","' . $iduser . '")');
@@ -40,7 +37,6 @@ class programme
 
     public function AfficheTypeProg($bdd)
     {
-
         try {
             $bdd->query('SELECT `id_user`, `id_prog` FROM `assos_user_prog`');
         } catch (Exception $erreur) {
@@ -51,8 +47,6 @@ class programme
 
     public function AfficheProg($iduser, $bdd)
     {
-
-       
         $requete = $bdd->query('SELECT pseudo FROM user INNER JOIN assos_user_prog ON user.id_user = assos_user_prog.id_user WHERE user.id_user="' . $iduser . '"');
         $requete2 = $bdd->query('SELECT id_prog  FROM  assos_user_prog WHERE id_user="' . $iduser . '"');
         $TabIdProg = $requete2->fetch();
@@ -60,7 +54,6 @@ class programme
         $requete3 = $bdd->query('SELECT typeprogramme FROM programme INNER JOIN assos_user_prog ON programme.id_prog = assos_user_prog.id_prog WHERE programme.id_prog="' . $idprog . '"');
         // echo 'SELECT typeprogramme FROM programme INNER JOIN assos_user_prog ON programme.id_prog = assos_user_prog.id_prog WHERE programme.id_prog="'.$idprog.'"';
         // SELECT * FROM table1 INNER JOIN table2 ON table1.id = table2.fk_id
-
         $resultat3 = $requete3->fetch();
         echo  "Votre programme est le programme " . $resultat3[0];
     }
@@ -70,6 +63,11 @@ class programme
         echo "Vous avez affaire au programme numéro  " . $this->_idprog . " il s'appelle " . $this->_typeprogramme . " et à pour user " . $this->_iduser . "";
     }
 
+    public function MiniConstruct($idprog, $typeprgramme) //sorte de second constructeur
+    {
+        $this->_idprog = $idprog;
+        $this->_typeprogramme = $typeprgramme;
+    }
 
     public function getidprog()
     {
@@ -80,13 +78,6 @@ class programme
     {
         return $this->_typeprogramme;
     }
-
-    public function MiniConstruct($idprog, $typeprgramme) //sorte de second constructeur
-    {
-        $this->_idprog = $idprog;
-        $this->_typeprogramme = $typeprgramme;
-    }
-
 
 
 }
